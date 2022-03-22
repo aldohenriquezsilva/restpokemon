@@ -1,10 +1,9 @@
 const express = require('express')
 var cors = require('cors')
 
-
 class Server{
 
-    constructor() {
+   constructor() {
         this.app = express();
         this.port = process.env.PORT;
         this.rutaPath = '/api/buscarpokemon';
@@ -22,13 +21,11 @@ class Server{
         this.app.use( express.json() );
     }
 
-    routes(){        
-
-        this.app.use(this.rutaPath, require('../routes/pokemon'));
-       
+    routes() {   
+        this.app.use(this.rutaPath, require('../routes/pokemon'));       
     }
 
-    listen(){
+    listen() {
         this.app.listen(this.port, () => {
             console.log('Servidor corriendo en puerto', this.port); 
         });

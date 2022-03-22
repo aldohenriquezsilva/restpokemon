@@ -1,12 +1,20 @@
-const { response } =  require('express');
+const { response, request } =  require('express');
 
 const pokemonGet = (req, res = response) => {
+    
     res.json({
-        id: 25,
-        name: 'Pikachu',
-        tipo: 'Electrico',
-        img: 'http://'
+        id: 10
     });
 }
 
-module.exports = { pokemonGet }
+const pokemonPost = (req = request, res = response) => {
+
+    const { txt_busqueda =""} = req.query;
+
+    res.json({
+        msg: 'Post',
+        txt_busqueda: txt_busqueda
+    });
+}
+
+module.exports = { pokemonGet, pokemonPost }
