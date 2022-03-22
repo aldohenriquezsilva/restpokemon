@@ -1,18 +1,31 @@
 const express = require('express')
+var cors = require('cors')
+
 
 class Server{
 
     constructor() {
         this.app = express();
         this.port = process.env.PORT;
+        this.rutaPath = '/api/buscarpokemon';
 
+        this.middlewares();
         this.routes();
     }
 
-    routes(){
-        this.app.get('/', (req, res) => {
-            res.send('Hola Mundo');
-        })
+    middlewares() {
+        this.app.use(cors());
+        //Directorio publico
+        this.app.use( express.static('public') );
+        
+        //Parseo y lectura del body
+        this.app.use( express.json() );
+    }
+
+    routes(){        
+
+        this.app.use(this.rutaPath, require('../routes/pokemon'));
+       
     }
 
     listen(){
