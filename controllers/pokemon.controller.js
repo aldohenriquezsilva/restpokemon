@@ -1,5 +1,7 @@
 const { response, request } =  require('express');
 
+const axios = require('axios');
+
 const pokemonGet = (req, res = response) => {
     
     res.json({
@@ -9,12 +11,14 @@ const pokemonGet = (req, res = response) => {
 
 const pokemonPost = (req = request, res = response) => {
 
-    const { txt_busqueda =""} = req.query;
+    const { txt_busqueda =""} = req.query; 
+   
+    const resp = axios.get('https://pokeapi.co/api/v2/pokemon/');   
 
-    res.json({
-        msg: 'Post',
-        txt_busqueda: txt_busqueda
-    });
+    res.json({            
+        filtro: txt_busqueda,
+        result: resp
+    });  
 }
 
 module.exports = { pokemonGet, pokemonPost }
