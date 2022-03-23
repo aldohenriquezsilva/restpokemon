@@ -9,16 +9,29 @@ const pokemonGet = (req, res = response) => {
     });
 }
 
-const pokemonPost = (req = request, res = response) => {
+const pokemonPost = async (req = request, res = response)  => {
 
     const { txt_busqueda =""} = req.query; 
    
-    const resp = axios.get('https://pokeapi.co/api/v2/pokemon/');   
+    //const result = await axios.get('https://pokeapi.co/api/v2/pokemon/');   
 
-    res.json({            
-        filtro: txt_busqueda,
-        result: resp
+   // Make a request for a user with a given ID
+    axios.get('https://pokeapi.co/api/v2/pokemon/'+ txt_busqueda)
+    .then(function (response) {
+        // handle success        
+            res.json({            
+                filtro: txt_busqueda,
+                result: response.data
+            });  
+    })
+    .catch(function (error) {
+        // handle error
+        console.log(error);
+        })
+    .then(function () {
+        // always executed
     });  
+
 }
 
 module.exports = { pokemonGet, pokemonPost }
