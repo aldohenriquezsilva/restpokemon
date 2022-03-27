@@ -1,5 +1,6 @@
-const express = require('express')
-var cors = require('cors')
+const express = require('express');
+var cors = require('cors');
+const axios = require('axios');
 
 class Server{
 
@@ -10,6 +11,7 @@ class Server{
 
         this.middlewares();
         this.routes();
+        //this.primeraBusqueda();
     }
 
     middlewares() {
@@ -29,8 +31,7 @@ class Server{
         this.app.listen(this.port, () => {
             console.log('Servidor corriendo en puerto', this.port); 
         });
-    }
-
+    }   
 }
 
 module.exports = Server;
