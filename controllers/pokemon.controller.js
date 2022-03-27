@@ -12,26 +12,27 @@ const pokemonGet = (req, res = response) => {
 const pokemonPost = async (req = request, res = response)  => {
 
     const { txt_busqueda =""} = req.query;
-    const PokemonApi = axios.create();
-    const ResultadoApi = await PokemonApi.get('https://pokeapi.co/api/v2/pokemon/'+ txt_busqueda);
-   
+    const pokemonApi = axios.create();  
+    
+    const resultadoApi = await pokemonApi.get(`https://pokeapi.co/api/v2/pokemon/${txt_busqueda}`);
+    
     const result = [];    
 
     if(txt_busqueda === ''){
         
-        for(var i = 0 ; i < ResultadoApi.data.results.length; i++)
+        for(var i = 0 ; i < resultadoApi.data.results.length; i++)
         {
-            const url = ResultadoApi.data.results[i].url;
+            const url = resultadoApi.data.results[i].url;
             
-            const ResultadoApiDet = await PokemonApi.get(url);
+            const resultadoApiDet = await pokemonApi.get(url);
 
-            const Pokemon = {
-                id: ResultadoApiDet.data.id,
-                name: ResultadoApiDet.data.name,
-                img: ResultadoApiDet.data.sprites.front_default
+            const pokemon = {
+                id: resultadoApiDet.data.id,
+                name: resultadoApiDet.data.name,
+                img: resultadoApiDet.data.sprites.front_default
             }                
         
-            result.push(Pokemon);  
+            result.push(pokemon);  
         }
 
         res.json({  
@@ -40,13 +41,13 @@ const pokemonPost = async (req = request, res = response)  => {
 
     }else {
 
-        const Pokemon = {
-            id: ResultadoApi.data.id,
-            name: ResultadoApi.data.name,
-            img: ResultadoApi.data.sprites.front_default
+        const pokemon = {
+            id: resultadoApi.data.id,
+            name: resultadoApi.data.name,
+            img: resultadoApi.data.sprites.front_default
         }                
     
-        result.push(Pokemon);
+        result.push(pokemon);
 
         res.json({  
             result: result
