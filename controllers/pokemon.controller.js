@@ -25,11 +25,11 @@ const pokemonPost = async (req = request, res = response)  => {
             const url = resultadoApi.data.results[i].url;
             
             const resultadoApiDet = await pokemonApi.get(url);
-
+                
             const pokemon = {
                 id: resultadoApiDet.data.id,
                 name: resultadoApiDet.data.name,
-                img: resultadoApiDet.data.sprites.front_default
+                img: resultadoApiDet.data.sprites.other['official-artwork'].front_default
             }                
         
             result.push(pokemon);  
@@ -40,11 +40,11 @@ const pokemonPost = async (req = request, res = response)  => {
         }); 
 
     }else {
-
+        
         const pokemon = {
             id: resultadoApi.data.id,
             name: resultadoApi.data.name,
-            img: resultadoApi.data.sprites.front_default
+            img: resultadoApi.data.sprites.other['official-artwork'].front_default
         }                
     
         result.push(pokemon);
