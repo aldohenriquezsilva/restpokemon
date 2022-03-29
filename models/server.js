@@ -6,8 +6,8 @@ class Server{
 
    constructor() {
         this.app = express();
-        this.port = process.env.PORT;
-        this.rutaPath = '/api/buscarpokemon';
+        this.port = process.env.PORT == null ? 8080 : process.env.PORT;
+        this.rutaPath = '/api/searchpokemon';
 
         this.middlewares();
         this.routes();

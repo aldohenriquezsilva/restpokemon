@@ -1,8 +1,8 @@
 const axios = require('axios');
 
-const { filtrarBusqueda } = require('../utils')
+const { filterSearch } = require('../utils')
 
-async function realizarBusqueda(txtBusqueda)
+async function performSearch(txtBusqueda)
 {
     const pokemonApi = axios.create(); 
     const result = [];    
@@ -30,7 +30,7 @@ async function realizarBusqueda(txtBusqueda)
         
         const resultadoUrl = await pokemonApi.get('https://pokeapi.co/api/v2/pokemon?limit=898&offset=0');        
 
-        const resultado = filtrarBusqueda(resultadoUrl.data.results, txtBusqueda);  
+        const resultado = filterSearch(resultadoUrl.data.results, txtBusqueda);  
         for(var i = 0 ; i < resultado.length; i++) {
       
             const resultadoApi = await pokemonApi.get(resultado[i].url);
@@ -47,4 +47,4 @@ async function realizarBusqueda(txtBusqueda)
     return result;
 }
 
-module.exports = { realizarBusqueda }
+module.exports = { performSearch }
