@@ -4,13 +4,16 @@
   "description": "prueba",
   "main": "index.js",
   "scripts": {
-    "test": "",
+    "test": "set NODE_OPTIONS=--experimental-vm-modules && jest",
     "start": "node index.js"
   },
   "author": "aldo",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.26.1",
+    "babel-jest": "^27.5.1",
+    "babel-plugin-syntax-class-properties": "^6.13.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
