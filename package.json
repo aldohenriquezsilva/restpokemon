@@ -4,7 +4,7 @@
   "description": "prueba",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "",
     "start": "node index.js"
   },
   "author": "aldo",
@@ -15,5 +15,8 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "node-fetch": "^3.2.3"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1"
   }
 }
