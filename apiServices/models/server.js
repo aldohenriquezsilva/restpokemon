@@ -1,6 +1,5 @@
 const express = require('express');
 var cors = require('cors');
-const axios = require('axios');
 
 class Server{
 
@@ -10,8 +9,7 @@ class Server{
         this.rutaPath = '/api/searchpokemon';
 
         this.middlewares();
-        this.routes();
-        //this.primeraBusqueda();
+        this.routes();        
     }
 
     middlewares() {
@@ -24,7 +22,7 @@ class Server{
     }
 
     routes() {   
-        this.app.use(this.rutaPath, require('../routes/pokemon'));       
+        this.app.use(this.rutaPath, require('../../routes/pokemon'));       
     }
 
     listen() {

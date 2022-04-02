@@ -1,10 +1,11 @@
+
 import clients from '../clients/pokeApi';
 
-describe('Prueba en PokeApi.js', () => {
+describe('Testing PokeApi.js', () => {
 
-    test('prueba consulta', async ()  => { 
-         const resultado = await clients.performSearch(''); 
-         console.log(resultado);       
+    test('consulting', async ()  => { 
+         const result = await clients.performSearch('pika'); 
+
+         expect(typeof result).toBe('object');
     });
 });
-

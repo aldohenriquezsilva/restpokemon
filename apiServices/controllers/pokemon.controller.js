@@ -4,9 +4,9 @@ const { performSearch } = require('../clients/pokeApi')
 
 const pokemonGet = async (req = request, res = response) => {
 
-    const { txtBusqueda =""} = req.query;
+    const { txtFilter =""} = req.query;
 
-    const result = await performSearch(txtBusqueda);    
+    const result = await performSearch(txtFilter);    
 
     res.json({  
         result: result
