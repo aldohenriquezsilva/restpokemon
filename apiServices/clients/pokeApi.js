@@ -5,16 +5,12 @@ const { filterSearch } = require('../models/utils')
 async function performSearch(txtFilter)
 {
     const pokemonApi = axios.create(); 
-    const result = [{
-        id:0,
-        img:"",
-        name:""
-    }];    
+    const result = [];    
 
     if(txtFilter === '') {
         
         const resultApi = await pokemonApi.get(`https://pokeapi.co/api/v2/pokemon/${txtFilter}`);
-
+        
         for(var i = 0 ; i < resultApi.data.results.length; i++)
         {
             const url = resultApi.data.results[i].url;
