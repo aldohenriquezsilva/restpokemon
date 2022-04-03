@@ -1,7 +1,7 @@
-function filterSearch(result, filter) {
+function filterSearch(data, filter) {
 
     let expression = new RegExp(`${filter}.*`, "i");
-    let pokemonFilter = result.filter(pokemon => expression.test(pokemon.name));
+    let pokemonFilter = data.filter(pokemon => expression.test(pokemon.name));
     return pokemonFilter;
 }
 
