@@ -4,13 +4,12 @@ const { performSearch } = require('../clients/pokeApi')
 
 const pokemonGet = async (req = request, res = response) => {
 
-    const { txtFilter =""} = req.query;
+    const txtFilter = req.query.txtFilter;
 
-    const result = await performSearch(txtFilter);    
+    const result = await performSearch(txtFilter);       
 
-    res.json({  
-        result: result
-    });  
+    //return result;
+    res.json( {result: result });
 }
 
-module.exports = { pokemonGet }
+module.exports =  pokemonGet 
