@@ -9,16 +9,18 @@ const mockError500 = { code: 500, data: Array(0) }
 describe('Testing controller', () => {
   
    test('should return 200', async ()  => {
-      const mRes = mockResp200;
-      const mResFilt = await clients.performSearch('pika');
-      expect(mRes.code).toEqual(200);      
+      //const mRes = mockResp200;
+      //expect(mRes.code).toEqual(200);
+      const txtFilter = 'pika';
+      const mResFilt = await clients.performSearch(txtFilter);      
       expect(mResFilt.code).toBe(200); 
    },30000);
 
    test('should 404 and return correct value', async () => {   
-     const resp = mockError404;
-     const mResFilt = await clients.performSearch('tester');
-     expect(resp.code).toEqual(404);  
+     //const resp = mockError404;
+     //expect(resp.code).toEqual(404);  
+     const txtFilter = 'tester';
+     const mResFilt = await clients.performSearch(txtFilter);
      expect(mResFilt.code).toBe(404);    
    });
           
