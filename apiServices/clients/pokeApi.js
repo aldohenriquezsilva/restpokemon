@@ -36,9 +36,9 @@ async function performSearch(txtFilter)
       }else {
         
         const resultUrl = await pokemonApi.get('https://pokeapi.co/api/v2/pokemon?limit=898&offset=0');              
-        status = resultUrl.status;
+        
         const resultFilter = filterSearch(resultUrl.data.results, txtFilter); 
-
+        status = resultFilter.length == 0 ? 404 : resultUrl.status;
         for(var i = 0 ; i < resultFilter.length; i++) {
       
             const resultApi = await pokemonApi.get(resultFilter[i].url);
@@ -58,10 +58,9 @@ async function performSearch(txtFilter)
       return req;    
     }
     catch(e)
-    {
-        status = 500;   
+    {         
         req = {
-            code: status,
+            code: 500,
             data: []  
         }
         return req;                

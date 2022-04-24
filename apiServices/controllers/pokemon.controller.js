@@ -8,7 +8,6 @@ const pokemonGet = async (req = request, res = response) => {
 
     const result = await performSearch(txtFilter);       
 
-    //return result;
     res.json( {result: result });
 }
 
