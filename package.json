@@ -25,5 +25,14 @@
     "@babel/preset-typescript": "^7.16.7",
     "@testing-library/jest-dom": "^5.16.3",
     "jest": "^27.5.1"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "lines": 90
+      }
+    }
   }
 }

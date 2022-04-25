@@ -1,4 +1,5 @@
- const  controller = require('../apiServices/controllers/pokemon.controller');
+const  controller = require('../apiServices/controllers/pokemon.controller');
+
 //import pokemonGet from '../apiServices/controllers/pokemon.controller'
 import clients from '../apiServices/clients/pokeApi';
 
@@ -23,5 +24,12 @@ describe('Testing controller', () => {
      const mResFilt = await clients.performSearch(txtFilter);
      expect(mResFilt.code).toBe(404);    
    });
+
+   //test('Test controller', async () => {
+   //   const req = request.params('txtFilter', 'pika');
+   //   const res = null;
+   //   await controller(req, res);
+   //   console.log(res);
+   //});
           
  });

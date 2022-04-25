@@ -18,17 +18,12 @@ describe('Testing PokeApi.js', () => {
     test('consulting code', async ()  => { 
         const result = await clients.performSearch('pika');
         expect(result.code).toBe(200);  
-        });
+        },30000);
    
        test('consulting poke not exists', async ()  => { 
              const result = await clients.performSearch('jkdasdhja');
              expect(result.code).toBe(404); 
-        });
-
-        test('should 500 and return correct value', async () => {         
-         //const result = await clients.performSearch('test');
-         //expect(result.code).toBe(500); 
-        });  
+        },30000); 
 
 });
 
